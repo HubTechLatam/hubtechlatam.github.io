@@ -1,0 +1,45 @@
+body {
+    margin: 0; /* Elimina el margen por defecto del body */
+    font-family: Arial, sans-serif; /* Fuente básica */
+    display: flex; /* Hacemos el body un contenedor flex */
+    justify-content: center; /* Centra horizontalmente los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% del alto de la ventana */
+    background-color: #f0f0f0; /* Color de fondo suave para ver el efecto */
+}
+
+.container {
+    display: flex; /* Hacemos el contenedor de botones un contenedor flex */
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 20px; /* Espacio entre los botones */
+    padding: 30px; /* Padding interno del contenedor */
+    background-color: #ffffff; /* Fondo del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 200px;
+    /* --- CAMBIOS AQUÍ --- */
+    text-align: center;      /* Centra el texto horizontalmente en el botón */
+    text-decoration: none;   /* Elimina el subrayado por defecto de los enlaces */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Tono más oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+.button:active {
+    background-color: #004085; /* Tono aún más oscuro al hacer clic */
+    transform: translateY(0); /* Vuelve a su posición original al hacer clic */
+}

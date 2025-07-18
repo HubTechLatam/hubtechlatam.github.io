@@ -1,0 +1,710 @@
+/* Variables CSS para facilitar cambios de color */
+:root {
+    --color-sidebar-bg-start: #ECF0F1; /* Fondo muy claro para sidebar de iconos y main content */
+    --color-sidebar-bg-end: #BDC3C7;   /* Un gris claro para el degradado del fondo claro */
+    --color-main-bg: #ECF0F1;          /* Fondo principal muy claro (igual que sidebar de iconos) */
+    --color-text-dark: #85919c;        /* Texto oscuro para contraste en fondos claros (Este será el color de los íconos inactivos) */
+    --color-text-muted: #607D8B;       /* Un gris azulado más oscuro para texto secundario si es necesario */
+    --color-text-light: #FFFFFF;       /* Texto claro para fondos oscuros */
+    --color-border: #ced4da;
+    --color-timeline-line: #29a85e;
+
+    /* Colores del acento - VERDE DE LA FOTO (AJUSTADO) */
+    --color-accent: #29a85e;           /* Un verde esmeralda vibrante para acentos y activo/hover */
+    --color-link-hover: #27ae60;       /* Un verde más oscuro para el hover */
+
+    /* Nuevas variables para la barra lateral principal (foto) */
+    --color-profile-sidebar-bg-start: #1e3a47; /* Azul/verde oscuro para la columna de perfil (original) */
+    --color-profile-sidebar-bg-end: #000000;   /* Negro para el final del degradado de perfil (original) */
+
+    --icon-sidebar-width: 80px;
+    --main-sidebar-width: 300px;
+}
+
+/* --- Base Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-dark); /* Color de texto base para el body (sobre fondos claros) */
+    overflow-x: hidden; /* Evita scroll horizontal no deseado */
+    display: flex; /* Hacemos el body un contenedor flex para las 3 columnas */
+    min-height: 100vh; /* Asegura que el body ocupe toda la altura */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text-dark); /* Color de enlaces en fondos claros */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent); /* Color de acento (verde) al hover */
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--color-text-dark); /* Los títulos también serán oscuros */
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.5em;
+    border-bottom: 2px solid var(--color-border); /* Borde de sección en gris claro */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* --- Contenedor Principal (Flexbox para las 3 columnas) --- */
+.cv-wrapper {
+    display: flex;
+    flex-grow: 1; /* Permite que el wrapper ocupe todo el espacio restante */
+    min-height: 100vh;
+}
+
+/* --- Columna 1: Barra Lateral de Íconos (Fondo Claro) --- */
+.icon-sidebar {
+    width: var(--icon-sidebar-width);
+    min-width: var(--icon-sidebar-width);
+    background: linear-gradient(to bottom, var(--color-sidebar-bg-start), var(--color-sidebar-bg-end)); /* Degradado claro */
+    color: var(--color-text-dark); /* Texto oscuro en esta barra */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Centra los íconos horizontalmente */
+    padding: 20px 0;
+    position: fixed; /* Lo mantenemos fijo */
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 200; /* Asegura que esté por encima de todo */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Sombra más sutil para fondo claro */
+}
+
+.icon-nav ul {
+    text-align: center;
+}
+
+.icon-nav li {
+    margin-bottom: 25px; /* Espacio entre los íconos del menú */
+}
+
+.icon-nav a {
+    display: flex; /* Usamos flexbox para alinear icono y texto */
+    flex-direction: column; /* Icono encima del texto */
+    align-items: center; /* Centra horizontalmente el icono y el texto */
+    justify-content: center;
+    padding: 10px 5px; /* Ajusta el padding para incluir texto */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--color-text-dark); /* Íconos/texto del menú en color oscuro (modificado) */
+}
+
+.icon-nav a i {
+    font-size: 1.8em; /* Tamaño de los íconos */
+    margin-bottom: 5px; /* Espacio entre icono y texto */
+}
+
+.icon-nav a span {
+    font-size: 0.7em; /* Tamaño del texto debajo del icono */
+    font-weight: 500;
+}
+
+.icon-nav li.active a,
+.icon-nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Fondo muy sutil al activo/hover */
+    color: var(--color-accent); /* Color de acento (verde) al activo/hover */
+}
+
+
+/* --- Columna 2: Barra Lateral Principal (Perfil y Contenido Secundario - Mantiene el verde oscuro) --- */
+.main-sidebar {
+    width: var(--main-sidebar-width);
+    min-width: var(--main-sidebar-width);
+    background: linear-gradient(to bottom, var(--color-profile-sidebar-bg-start), var(--color-profile-sidebar-bg-end)); /* Degradado oscuro */
+    color: var(--color-text-light); /* Texto claro en esta barra oscura */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: fixed; /* Sigue siendo fijo */
+    height: 100vh;
+    left: var(--icon-sidebar-width); /* POSICIONADO A LA DERECHA DE LA BARRA DE ÍCONOS */
+    top: 0;
+    z-index: 150; /* Menos z-index que la barra de íconos */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+
+.main-sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permite que el inner crezca */
+    justify-content: flex-start;
+    padding: 30px 0; /* Padding general */
+}
+
+.profile-card {
+    padding: 0 20px 30px 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--color-accent); /* Borde de foto se mantiene verde */
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1); /* Sombra alrededor de la foto */
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-card h1 {
+    font-size: 1.5em;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    color: var(--color-text-light); /* Título (nombre completo) en color claro */
+}
+
+.profile-card .role {
+    font-size: 1.1em;
+    color: var(--color-text-light); /* Rol profesional en color claro */
+    margin-bottom: 20px;
+}
+
+.profile-card .social-links {
+    margin-bottom: 25px;
+}
+
+.profile-card .social-links a {
+    color: var(--color-text-light); /* Íconos sociales en color claro */
+    font-size: 1.5em;
+    margin: 0 8px;
+}
+
+.profile-card .social-links a:hover {
+    color: var(--color-accent); /* Íconos sociales en color verde al hover */
+}
+
+/* Botón Download CV mejorado */
+.btn-download-cv {
+    display: inline-block;
+    background-color: var(--color-accent); /* Mantiene el color de acento */
+    color: #FFFFFF; /* Texto blanco inicial */
+    padding: 10px 25px;
+    border-radius: 20px; /* Esquinas más redondeadas */
+    font-weight: 600;
+    border: 2px solid #FFFFFF; /* Borde blanco */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra inferior */
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease; /* Añadimos transición al color del texto */
+    text-transform: uppercase;
+    font-size: 0.9em;
+    cursor: pointer; /* Añadimos cursor de puntero para indicar que es interactivo */
+}
+
+.btn-download-cv:hover {
+    background-color: var(--color-link-hover); /* Mantiene el cambio de fondo al hover */
+    transform: translateY(-2px); /* Mantiene el ligero movimiento hacia arriba al hover */
+    color: #333; /* Cambia el color del texto a un tono oscuro al pasar el cursor */
+}
+
+
+.sidebar-footer {
+    padding: 15px;
+    font-size: 0.8em;
+    color: var(--color-text-muted); /* Footer de la barra principal en gris (quizás este quieres oscuro, o también claro, ajusta si es necesario) */
+    text-align: center;
+    margin-top: auto; /* Empuja el footer al final de la main-sidebar */
+}
+
+/* --- Columna 3: Contenido Principal (Fondo Claro) --- */
+.main-content {
+    /* Ajustamos el margin-left para que comience después de ambas barras laterales */
+    margin-left: calc(var(--icon-sidebar-width) + var(--main-sidebar-width));
+    flex-grow: 1; /* Ocupa el resto del espacio */
+    background-color: var(--color-main-bg); /* Fondo principal muy claro */
+    padding: 50px;
+    padding-right: 80px;
+    overflow-y: auto;
+}
+
+.content-section {
+    margin-bottom: 80px;
+}
+
+/* About Me - Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--color-text-dark); /* Texto de "about me" en oscuro */
+}
+
+.personal-info p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: var(--color-text-dark); /* Información personal en oscuro */
+}
+
+.personal-info p span {
+    font-weight: 600;
+    color: var(--color-accent); /* Spans de información personal en verde */
+    margin-right: 10px;
+    display: inline-block;
+    min-width: 70px;
+}
+
+/* What I Do - Grid */
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    margin-top: 40px;
+    color: var(--color-accent); /* Subtítulos (What I Do) en verde */
+}
+
+.what-i-do-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.service-item {
+    background-color: #FFFFFF; /* Fondo de servicio blanco */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border); /* Borde de servicio gris claro */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-service {
+    font-size: 2.5em;
+    color: var(--color-accent); /* Íconos de servicio en verde */
+    margin-bottom: 15px;
+    display: block;
+}
+
+.service-item h4 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--color-text-dark); /* Título de servicio en oscuro */
+}
+
+.service-item p {
+    color: var(--color-text-muted); /* Texto de servicio en gris */
+    font-size: 0.95em;
+}
+
+/* Testimonials Slider Nav */
+.testimonials-slider {
+    min-height: 150px;
+    background-color: #FFFFFF; /* Fondo de testimonios blanco */
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-muted); /* Texto de testimonios en gris */
+    font-style: italic;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.slider-nav {
+    text-align: right;
+}
+
+.slider-arrow {
+    background-color: var(--color-accent); /* Flechas de slider en verde */
+    color: #FFFFFF; /* Texto/flecha en blanco */
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slider-arrow:hover {
+    background-color: var(--color-link-hover);
+    transform: translateY(-2px);
+}
+
+/* --- Estilos para Resume.html --- */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 40px;
+    border-left: 2px solid var(--color-timeline-line); /* Línea de tiempo en gris claro */
+}
+
+.timeline-item {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -39px; /* Ajusta esto para alinear con la línea */
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-accent); /* Círculo de línea de tiempo en verde */
+    border-radius: 50%;
+    border: 3px solid var(--color-main-bg); /* Borde alrededor del círculo en blanco/claro */
+    z-index: 1;
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    color: var(--color-accent); /* Fecha de línea de tiempo en verde */
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.timeline-content h4 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    color: var(--color-text-dark); /* Título de contenido de línea de tiempo en oscuro */
+}
+
+.timeline-content .sub-heading {
+    font-size: 1em;
+    color: var(--color-text-muted); /* Subtítulos en gris */
+    margin-bottom: 10px;
+}
+
+.timeline-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: var(--color-text-muted); /* Listas en gris */
+    font-size: 0.95em;
+}
+.timeline-content li {
+    margin-bottom: 5px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.skill-item h4 {
+    margin-bottom: 10px;
+    color: var(--color-text-dark); /* Título de habilidad en oscuro */
+    font-size: 1.1em;
+}
+
+.progress-bar {
+    background-color: var(--color-border); /* Barra de progreso en gris claro */
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background-color: var(--color-accent); /* Relleno de progreso en verde */
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* --- Estilos para Portfolio.html --- */
+.portfolio-filters {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background-color: #FFFFFF; /* Fondo de botón de filtro en blanco */
+    color: var(--color-text-dark); /* Texto de botón de filtro en oscuro */
+    border: 1px solid var(--color-border);
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--color-accent); /* Activo/hover en verde */
+    color: #FFFFFF; /* Texto en blanco */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background-color: #FFFFFF; /* Fondo de ítem de portafolio en blanco */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.portfolio-item h4 {
+    font-size: 1.3em;
+    padding: 15px 20px 5px;
+    margin-bottom: 5px;
+    color: var(--color-text-dark); /* Título de portafolio en oscuro */
+}
+
+.portfolio-item p {
+    color: var(--color-text-muted); /* Texto de portafolio en gris */
+    font-size: 0.9em;
+    padding: 0 20px 15px;
+}
+
+.portfolio-item .view-project-btn {
+    display: block;
+    background-color: var(--color-accent); /* Botón de ver proyecto en verde */
+    color: #FFFFFF; /* Texto en blanco */
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-item .view-project-btn:hover {
+    background-color: var(--color-link-hover);
+}
+
+/* --- Estilos para Contact.html --- */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.contact-info-item {
+    background-color: #FFFFFF; /* Fondo de info de contacto en blanco */
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info-item i {
+    font-size: 2.5em;
+    color: var(--color-accent); /* Íconos de contacto en verde */
+    margin-bottom: 15px;
+}
+
+.contact-info-item h4 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--color-text-dark); /* Título de contacto en oscuro */
+}
+
+.contact-info-item p {
+    color: var(--color-text-muted); /* Texto de contacto en gris */
+    font-size: 0.95em;
+}
+
+.contact-form {
+    background-color: #FFFFFF; /* Fondo de formulario en blanco */
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-accent); /* Título de formulario en verde */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #F8F8F8; /* Fondo de campo de formulario muy claro */
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    color: var(--color-text-dark); /* Texto en campo de formulario en oscuro */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-text-muted); /* Placeholder en gris */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.3); /* Sombra de enfoque verde */
+}
+
+.btn-send-message {
+    display: block;
+    width: 100%;
+    background-color: var(--color-accent); /* Botón de enviar en verde */
+    color: #FFFFFF; /* Texto en blanco */
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.btn-send-message:hover {
+    background-color: var(--color-link-hover);
+    transform: translateY(-2px);
+}
+
+.btn-send-message i {
+    margin-right: 10px;
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 992px) {
+    body {
+        flex-direction: column; /* Colapsa a una columna */
+    }
+
+    .icon-sidebar {
+        position: relative; /* No es fijo, se comporta como bloque normal */
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        box-shadow: none;
+        flex-direction: row; /* Íconos en fila */
+        justify-content: center; /* Centra los íconos */
+        background: linear-gradient(to right, var(--color-sidebar-bg-start), var(--color-sidebar-bg-end)); /* Degradado horizontal claro para móviles */
+    }
+
+    .icon-sidebar .icon-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .icon-sidebar .icon-nav li {
+        margin: 0 15px; /* Espacio horizontal entre íconos */
+    }
+
+    .main-sidebar {
+        position: relative; /* No es fijo, se comporta como bloque normal */
+        width: 100%;
+        height: auto;
+        left: 0; /* Ya no hay desplazamiento a la izquierda */
+        padding: 20px;
+        box-shadow: none;
+        background: linear-gradient(to right, var(--color-profile-sidebar-bg-start), var(--color-profile-sidebar-bg-end)); /* Degradado horizontal verde/negro para móviles */
+    }
+
+    .main-sidebar-inner {
+        padding: 0; /* Ajustamos padding si lo pusimos en .main-sidebar */
+        align-items: center; /* Centra el contenido */
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 30px;
+    }
+
+    .about-grid, .what-i-do-grid, .skills-grid, .portfolio-grid, .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .personal-info {
+        text-align: left;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .profile-card h1 {
+        font-size: 1.5em;
+    }
+
+    .profile-card .role {
+        font-size: 1em;
+    }
+
+    .profile-card .social-links a {
+        font-size: 1.2em;
+        margin: 0 5px;
+    }
+
+    .btn-download-cv {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+}

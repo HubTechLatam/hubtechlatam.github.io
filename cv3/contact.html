@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Nombre - Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="cv-wrapper">
+        <aside class="icon-sidebar">
+            <nav class="icon-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                    <li><a href="about.html"><i class="fas fa-user"></i> <span>About Me</span></a></li>
+                    <li><a href="resume.html"><i class="fas fa-file-alt"></i> <span>Resume</span></a></li>
+                    <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a></li>
+                    <li class="active"><a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <aside class="main-sidebar">
+            <div class="main-sidebar-inner">
+                <div class="profile-card">
+                    <img src="tu_foto.jpg" alt="Tu Nombre Completo" class="profile-pic">
+                    <h1>Tu Nombre Completo</h1>
+                    <p class="role">Tu Rol Profesional</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <a href="#" class="btn-download-cv"><i class="fas fa-download"></i> Download CV</a>
+                </div>
+
+                <div class="sidebar-footer">
+                    <p>&copy; 2024 Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="contact" class="content-section">
+                <h2>Contact Me</h2>
+
+                <div class="contact-info-grid">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Address</h4>
+                        <p>88 Some Street, Some Town, Country</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>+0123 123 456 789</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>your.email@example.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-send-message"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
